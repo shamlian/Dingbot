@@ -14,13 +14,6 @@
 #define LED_ON  setmsk(PORTB, 0x01)
 #define LED_OFF clrmsk(PORTB, 0x01)
 
-void delay_ms(uint8_t ms)
-{
-	for(; ms >= 32; ms-=32)
-		_delay_ms(32);
-	_delay_ms(ms);
-}
-
 #include "midi.c"
 #include "keys.c"
 
@@ -48,9 +41,9 @@ int main (void)
 			{
 				strike(i);
 				LED_ON;
-				delay_ms(100);
+				_delay_ms(100);
 				LED_OFF;
-				delay_ms(100);
+				_delay_ms(100);
 			}
 		#endif
 	}

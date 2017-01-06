@@ -94,7 +94,6 @@ void midi_buf_parse(void)
 	}
 }
 
-void delay_ms(uint8_t ms);
 
 void midiinit(void)
 {
@@ -111,7 +110,7 @@ void midiinit(void)
 	
 	// set up channel input and store channel number
 	PORTE |= 0xF0; // turn on pull-ups
-	delay_ms(100);  // let things settle
+	_delay_ms(100);  // let things settle
 	d = (~PINE) >> 4; // sample and decode
 	midi_channel =  ((d & 1) ? 4 : 0);
 	midi_channel += ((d & 2) ? 8 : 0);
